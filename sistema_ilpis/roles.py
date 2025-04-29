@@ -8,9 +8,8 @@ class Gerente(AbstractUserRole):
         'agendar_visitas' : True
     }
 
-class Administrador(AbstractUserRole):
+class Usuario(AbstractUserRole):
     avaible_permisions = {
-        'cadastrar_usuario': True,
         'cadastrar_medicamentos': True,
         'cadastrar_responsaveis' : True,
         'agendar_visitas' : True
