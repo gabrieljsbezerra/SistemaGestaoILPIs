@@ -1,16 +1,18 @@
 from rolepermissions.roles import AbstractUserRole
 
+
 class Gerente(AbstractUserRole):
-    avaible_permisions = {
+    available_permissions = {
         'cadastrar_usuario': True,
         'cadastrar_medicamentos': True,
-        'cadastrar_responsaveis' : True,
-        'agendar_visitas' : True
+        'cadastrar_responsaveis': True,
+        'agendar_visitas': True,
     }
 
+
 class Usuario(AbstractUserRole):
-    avaible_permisions = {
+    available_permissions = {
         'cadastrar_medicamentos': True,
-        'cadastrar_responsaveis' : True,
-        'agendar_visitas' : True
+        'cadastrar_responsaveis': True,
+        'agendar_visitas': True,
     }
