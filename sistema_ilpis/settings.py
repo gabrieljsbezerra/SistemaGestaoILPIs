@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    'usuarios'
+    'usuarios',
+    'rolepermissions',
 ]
 
 MIDDLEWARE = [
@@ -119,3 +120,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Config auth
 AUTH_USER_MODEL = 'usuarios.Users'
+
+# Role Permissions
+
+ROLEPERMISSIONS_MODULE = 'sistema_ilpis.roles'
