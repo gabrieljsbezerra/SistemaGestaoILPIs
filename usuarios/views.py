@@ -48,3 +48,7 @@ def login(request):
             
         auth.login(request, user)
         return HttpResponse('Usuario Logado!')
+    
+def logout(request):
+    request.session.flush()
+    return redirect(reverse('login'))
