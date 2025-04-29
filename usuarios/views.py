@@ -3,6 +3,6 @@ from django.shortcuts import render
 from rolepermissions.decorators import has_permission_decorator
 
 
-@has_permission_decorator('cadastrar_beneficiarios')
-def cadastrar_beneficiarios(request):
-    return render(request, 'cadastrar_beneficiarios.html')
+@has_permission_decorator('cadastrar_usuario')
+def cadastrar_usuario(request):
+    return render(request, 'cadastrar_usuario.html')
