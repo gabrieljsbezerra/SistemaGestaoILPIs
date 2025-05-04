@@ -5,11 +5,14 @@ from .models import Users
 from django.shortcuts import redirect
 from django.urls import reverse
 from django.contrib import auth
+from django.shortcuts import get_object_or_404
+from rolepermissions.roles import assign_role
 
 @has_permission_decorator('cadastrar_usuario')
 def cadastrar_usuario(request):
     if request.method == "GET":
-        return render(request, 'cadastrar_usuario.html')
+        usuarios = Users.objects.filter(cargo="U") # Para listar os usuarios, busco no banco de dados como um select com where
+        return render(request, 'cadastrar_usuario.html', {'usuarios': usuarios})
     if request.method == "POST":
         email = request.POST.get('email')
         senha = request.POST.get('senha')
@@ -24,8 +27,9 @@ def cadastrar_usuario(request):
             username=email,
             email=email,
             password=senha,
-            cargo="G"
+            cargo="U"
         )
+        assign_role(user, 'usuario')
         # TODO: Redirecionar para tela de login com mensagem de sucesso
         return HttpResponse('Conta criada com sucesso!')
     
@@ -52,3 +56,9 @@ def login(request):
 def logout(request):
     request.session.flush()
     return redirect(reverse('login'))
+
+@has_permission_decorator('cadastrar_usuario')
+def excluir_usuario(request, id):
+    usuario = get_object_or_404(Users, id=id) #Busca no banco de dados a info... se n existir retorna erro 404
+    usuario.delete()
+    return redirect(reverse('cadastrar_usuario'))

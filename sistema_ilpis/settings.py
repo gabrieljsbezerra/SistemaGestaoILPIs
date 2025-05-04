@@ -51,7 +51,6 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
-
 ROOT_URLCONF = "sistema_ilpis.urls"
 
 TEMPLATES = [

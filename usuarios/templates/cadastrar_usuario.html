@@ -12,5 +12,30 @@
             <br>
             <button type="subit" class="btn btn-success">Registrar</button>
         </form> 
+
+        <hr class="bg-hr">
+
+        <table class="table table-striped table-dark">
+            <thead>
+              <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Sobrenome</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">Último login</th>
+                <th scope="col">Excluir usuário</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for usuario in usuarios%}
+                    <tr>
+                        <th scope="row">{{usuario.first_name}}</th>
+                        <td>{{usuario.last_name}}</td>
+                        <td>{{usuario.email}}</td>
+                        <td>{{usuario.last_login}}</td>
+                        <td><a href="{% url 'excluir_usuario' usuario.id %}" class="btn btn-danger">Excluir</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+          </table>
     </div>
 {% endblock %}

@@ -12,6 +12,7 @@ class Gerente(AbstractUserRole):
 
 class Usuario(AbstractUserRole):
     available_permissions = {
+        'cadastrar_usuario': False,
         'cadastrar_medicamentos': True,
         'cadastrar_responsaveis': True,
         'agendar_visitas': True,
