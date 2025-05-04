@@ -7,6 +7,7 @@ from django.urls import reverse
 from django.contrib import auth
 from django.shortcuts import get_object_or_404
 from rolepermissions.roles import assign_role
+from django.contrib import messages
 
 @has_permission_decorator('cadastrar_usuario')
 def cadastrar_usuario(request):
@@ -61,4 +62,5 @@ def logout(request):
 def excluir_usuario(request, id):
     usuario = get_object_or_404(Users, id=id) #Busca no banco de dados a info... se n existir retorna erro 404
     usuario.delete()
+    messages.add_message(request, messages.SUCCESS, 'Usuário deletado com sucesso!')
     return redirect(reverse('cadastrar_usuario'))
