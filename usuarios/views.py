@@ -9,6 +9,9 @@ from django.shortcuts import get_object_or_404
 from rolepermissions.roles import assign_role
 from django.contrib import messages
 
+# TODO: Fazer as mensagens do Django
+# TODO: Implementar as validacoes de campos
+
 @has_permission_decorator('cadastrar_usuario')
 def cadastrar_usuario(request):
     if request.method == "GET":

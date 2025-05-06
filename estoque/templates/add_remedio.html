@@ -1,0 +1,31 @@
+<form action="{% url 'add_remedio' %}" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+    <label>Imagens:</label>
+    <input type="file" name="imagens" multiple>
+    <br>
+    <br>
+    <label>Nome:</label>
+    <input type="text" name="nome">
+    <br>
+    <br>
+    <label>Categoria:</label>
+    <select name="categoria">
+        {% for categoria in categorias %}
+           <option value="{{categoria.id}}" >{{categoria.tipo}}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <br>
+    <label>Marca:</label>
+    <input type="text" name="marca">
+    <br>
+    <br>
+    <label>Quantidade:</label>
+    <input type="number" name="quantidade">
+    <br>
+    <br>
+    <label>Custo:</label>
+    <input type="number" name="preco_compra">
+    <br>
+    <br>
+    <input type="submit" value="Salvar">
+</form>
