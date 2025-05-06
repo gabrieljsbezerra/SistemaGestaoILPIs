@@ -17,5 +17,5 @@ class Remedio(models.Model):
         return self.nome
     
 class Imagem(models.Model):
-    imagem = models.ImageField(upload_to="imagem_produto")
-    produto = models.ForeignKey(Remedio, on_delete=models.CASCADE)
+    imagem = models.ImageField(upload_to="imagem_remedio")
+    remedio = models.ForeignKey(Remedio, on_delete=models.CASCADE)
