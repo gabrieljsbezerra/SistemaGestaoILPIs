@@ -15,6 +15,8 @@ def cadastrar_usuario(request):
         usuarios = Users.objects.filter(cargo="U") # Para listar os usuarios, busco no banco de dados como um select com where
         return render(request, 'cadastrar_usuario.html', {'usuarios': usuarios})
     if request.method == "POST":
+        nome = request.POST.get('nome')
+        sobrenome = request.POST.get('sobrenome')
         email = request.POST.get('email')
         senha = request.POST.get('senha')
         
@@ -25,6 +27,8 @@ def cadastrar_usuario(request):
             return HttpResponse('E-mail existente')
 
         user = Users.objects.create_user(
+            first_name=nome,
+            last_name=sobrenome,
             username=email,
             email=email,
             password=senha,
