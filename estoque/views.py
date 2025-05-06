@@ -29,7 +29,7 @@ def add_remedio(request):
             img = img.convert('RGB')
             img = img.resize((300, 300))
             draw = ImageDraw.Draw(img)
-            draw.text((20, 280), "Projeto Univesp - Sistema ILPIS", (255, 255, 255))
+            draw.text((20, 280), "Projeto Univesp - Sistema ILPIS", (000, 000, 000))
             output = BytesIO() #recebe os bytes da img
             img.save(output, format="JPEG", quality=100)
             output.seek(0) #faz o ponteiro apontar para o inicio do arquivo
