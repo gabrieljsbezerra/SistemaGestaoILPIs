@@ -1,31 +1,46 @@
-<form action="{% url 'add_remedio' %}" method="POST" enctype="multipart/form-data"> {% csrf_token %}
-    <label>Imagens:</label>
-    <input type="file" name="imagens" multiple>
-    <br>
-    <br>
-    <label>Nome:</label>
-    <input type="text" name="nome">
-    <br>
-    <br>
-    <label>Categoria:</label>
-    <select name="categoria">
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="container">
+  <h2 class="mb-4">Cadastrar Remédio</h2>
+  <form action="{% url 'add_remedio' %}" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+    {% csrf_token %}
+
+    <div class="mb-3">
+      <label for="imagens" class="form-label">Imagens:</label>
+      <input class="form-control" type="file" name="imagens" id="imagens" multiple>
+    </div>
+
+    <div class="mb-3">
+      <label for="nome" class="form-label">Nome:</label>
+      <input class="form-control" type="text" name="nome" id="nome" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="categoria" class="form-label">Categoria:</label>
+      <select class="form-select" name="categoria" id="categoria" required>
         {% for categoria in categorias %}
-           <option value="{{categoria.id}}" >{{categoria.tipo}}</option>
+          <option value="{{ categoria.id }}">{{ categoria.tipo }}</option>
         {% endfor %}
-    </select>
-    <br>
-    <br>
-    <label>Marca:</label>
-    <input type="text" name="marca">
-    <br>
-    <br>
-    <label>Quantidade:</label>
-    <input type="number" name="quantidade">
-    <br>
-    <br>
-    <label>Custo:</label>
-    <input type="number" name="preco_compra">
-    <br>
-    <br>
-    <input type="submit" value="Salvar">
-</form>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="marca" class="form-label">Marca:</label>
+      <input class="form-control" type="text" name="marca" id="marca">
+    </div>
+
+    <div class="mb-3">
+      <label for="quantidade" class="form-label">Quantidade:</label>
+      <input class="form-control" type="number" name="quantidade" id="quantidade">
+    </div>
+
+    <div class="mb-3">
+      <label for="preco_compra" class="form-label">Custo:</label>
+      <input class="form-control" type="number" name="preco_compra" id="preco_compra" step="0.01">
+    </div>
+
+    <button type="submit" class="btn btn-success">Salvar</button>
+  </form>
+</div>
+{% endblock %}

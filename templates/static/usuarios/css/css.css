@@ -10,3 +10,54 @@
 .bg-hr{
     background-color: gray;
 }
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    transition: background-color 0.3s, color 0.3s;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Tema claro */
+  :root {
+    --bg: #f8f9fa;
+    --text: #212529;
+    --card: #ffffff;
+    --border: #dee2e6;
+  }
+  
+  /* Tema escuro */
+  [data-theme="dark"] {
+    --bg: #121212;
+    --text: #f1f1f1;
+    --card: #1f1f1f;
+    --border: #333;
+  }
+  
+  /* Animações */
+  .animate-fade {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(15px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Botão de troca de tema */
+  #themeToggle {
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }

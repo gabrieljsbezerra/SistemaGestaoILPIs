@@ -6,7 +6,8 @@ from datetime import date
 from io import BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
 import sys
-
+from django.shortcuts import redirect 
+from django.urls import reverse
 def add_remedio(request):
     if request.method == "GET":
         categorias = Categoria.objects.all()
@@ -43,4 +44,4 @@ def add_remedio(request):
             )
             img_dj = Imagem(imagem = img_final, remedio=remedio)
             img_dj.save()
-        return HttpResponse('foi')
+        return redirect(reverse('add_remedio'))
