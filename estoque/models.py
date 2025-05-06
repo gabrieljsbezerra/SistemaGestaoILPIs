@@ -15,3 +15,7 @@ class Remedio(models.Model):
 
     def __str__(self):
         return self.nome
+    
+class Imagem(models.Model):
+    imagem = models.ImageField(upload_to="imagem_produto")
+    produto = models.ForeignKey(Remedio, on_delete=models.CASCADE)
