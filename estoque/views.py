@@ -8,10 +8,13 @@ from django.core.files.uploadedfile import InMemoryUploadedFile
 import sys
 from django.shortcuts import redirect 
 from django.urls import reverse
+from django.contrib import messages
+
 def add_remedio(request):
     if request.method == "GET":
         categorias = Categoria.objects.all()
-        return render(request, 'add_remedio.html', {'categorias': categorias})
+        remedios = Remedio.objects.all()
+        return render(request, 'add_remedio.html', {'categorias': categorias, 'remedios': remedios})
     elif request.method == "POST":
         nome = request.POST.get('nome')
         categoria = request.POST.get('categoria')
@@ -44,4 +47,5 @@ def add_remedio(request):
             )
             img_dj = Imagem(imagem = img_final, remedio=remedio)
             img_dj.save()
+        messages.add_message(request, messages.SUCCESS, 'Medicamento cadastrado com sucesso!')
         return redirect(reverse('add_remedio'))
