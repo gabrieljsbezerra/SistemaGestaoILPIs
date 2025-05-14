@@ -27,7 +27,7 @@
             <select name="categoria" class="form-select" required>
                 <option value="">Selecione a categoria</option>
                 {% for categoria in categorias %}
-                <option value="{{ categoria.id }}" {% if categoria.id == remedio.categoria.id %}selected{% endif %}>
+                <option value="{{ categoria.id }}" {% if categoria.id==remedio.categoria.id %}selected{% endif %}>
                     {{ categoria.tipo }}
                 </option>
                 {% endfor %}
@@ -37,13 +37,15 @@
         <!-- Quantidade -->
         <div class="mb-3">
             <label class="form-label">Quantidade</label>
-            <input type="number" name="quantidade" class="form-control" value="{{ remedio.quantidade|floatformat:'0' }}" required>
+            <input type="number" name="quantidade" class="form-control" value="{{ remedio.quantidade|floatformat:'0' }}"
+                required>
         </div>
 
         <!-- Preço de Compra -->
         <div class="mb-3">
             <label class="form-label">Preço de Compra</label>
-            <input type="number" step="any" name="preco_compra" class="form-control" value="{{ remedio.preco_compra|floatformat:0|cut:',' }}">
+            <input type="number" step="any" name="preco_compra" class="form-control"
+                value="{{ remedio.preco_compra|floatformat:0|cut:',' }}">
         </div>
 
         <!-- Upload de Imagens -->
