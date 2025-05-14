@@ -65,4 +65,27 @@ body {
     transform: translateY(0);
   }
 }
+.remedio-card {
+  background-color: var(--card);
+  color: var(--text);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 1rem;
+}
+
+.remedio-card:hover {
+  transform: scale(1.03) translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+}
+
+.remedio-img {
+  transition: transform 0.3s ease;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+.remedio-card:hover .remedio-img {
+  transform: scale(1.04);
+}
+
 

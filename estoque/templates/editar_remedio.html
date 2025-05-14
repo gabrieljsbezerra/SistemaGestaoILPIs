@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo %}Editar Medicamento{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Editar Cadastro - Medicamento</h1>
+    <form method="POST" enctype="multipart/form-data" class="shadow p-4 bg-white rounded">
+        {% csrf_token %}
+
+        <!-- Nome -->
+        <div class="mb-3">
+            <label class="form-label">Nome</label>
+            <input type="text" name="nome" class="form-control" value="{{ remedio.nome }}" required>
+        </div>
+
+        <!-- Marca -->
+        <div class="mb-3">
+            <label class="form-label">Marca</label>
+            <input type="text" name="marca" class="form-control" value="{{ remedio.marca }}">
+        </div>
+
+        <!-- Categoria -->
+        <div class="mb-3">
+            <label class="form-label">Categoria</label>
+            <select name="categoria" class="form-select" required>
+                <option value="">Selecione a categoria</option>
+                {% for categoria in categorias %}
+                <option value="{{ categoria.id }}" {% if categoria.id == remedio.categoria.id %}selected{% endif %}>
+                    {{ categoria.tipo }}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- Quantidade -->
+        <div class="mb-3">
+            <label class="form-label">Quantidade</label>
+            <input type="number" name="quantidade" class="form-control" value="{{ remedio.quantidade|floatformat:'0' }}" required>
+        </div>
+
+        <!-- Preço de Compra -->
+        <div class="mb-3">
+            <label class="form-label">Preço de Compra</label>
+            <input type="number" step="any" name="preco_compra" class="form-control" value="{{ remedio.preco_compra|floatformat:0|cut:',' }}">
+        </div>
+
+        <!-- Upload de Imagens -->
+        <div class="mb-3">
+            <label class="form-label">Imagens (adicionar novas)</label>
+            <input type="file" name="imagens" class="form-control" multiple>
+            <small class="form-text text-muted">As imagens existentes serão mantidas. Novas imagens serão
+                adicionadas.</small>
+        </div>
+
+        <!-- Imagens Atuais -->
+        {% if imagens %}
+        <div class="mt-4">
+            <h5>Imagens atuais:</h5>
+            <div class="row">
+                {% for imagem in imagens %}
+                <div class="col-md-3 mb-3">
+                    <img src="{{ imagem.imagem.url }}" class="img-fluid rounded border w-100"
+                        style="max-height: 200px; object-fit: cover;">
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Botões -->
+        <div class="text-center mt-4 d-flex justify-content-center gap-3 flex-wrap">
+            <button type="submit" class="btn btn-success px-4">Salvar Alterações</button>
+            <a href="{% url 'add_remedio' %}" class="btn btn-secondary px-4">Cancelar</a>
+            <a href="{% url 'excluir_remedio' remedio.id %}" class="btn btn-danger px-4"
+                onclick="return confirm('Tem certeza que deseja excluir este medicamento?');">
+                Excluir
+            </a>
+        </div>
+    </form>
+</div>
+{% endblock %}
