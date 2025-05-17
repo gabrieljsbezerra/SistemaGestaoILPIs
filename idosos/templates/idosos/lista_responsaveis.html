@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block titulo %}Lista de Responsáveis{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Lista de Responsáveis</h2>
+
+    <a href="{% url 'cadastrar_responsavel' %}" class="btn btn-success mb-3">Novo Cadastro</a>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Telefone</th>
+                <th>Email</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for responsavel in responsaveis %}
+            <tr>
+                <td>{{ responsavel.nome }}</td>
+                <td>{{ responsavel.telefone }}</td>
+                <td>{{ responsavel.email }}</td>
+                <td>
+                    <a href="{% url 'editar_responsavel' responsavel.id %}" class="btn btn-sm btn-primary">Editar</a>
+                    <a href="{% url 'excluir_responsavel' responsavel.id %}" class="btn btn-sm btn-danger"
+                       onclick="return confirm('Tem certeza que deseja excluir este responsável?');">Excluir</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4" class="text-center">Nenhum responsável cadastrado.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

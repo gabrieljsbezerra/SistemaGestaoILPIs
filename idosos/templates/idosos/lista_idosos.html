@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block titulo %}Lista de Idosos{% endblock %}
+{% block body %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Lista de Idosos</h2>
+    <a href="{% url 'cadastrar_idoso' %}" class="btn btn-success mb-3">Novo Cadastro</a>
+    <table class="table table-striped align-middle text-center">
+        <thead>
+            <tr>
+                <th>Foto</th>
+                <th>Nome</th>
+                <th>Data de Nascimento</th>
+                <th>Responsável</th>
+                <th>Remédios</th>
+                <th>Observações</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for idoso in idosos %}
+            <tr>
+                <td>
+                    {% if idoso.foto %}
+                        <img src="{{ idoso.foto.url }}" alt="Foto de {{ idoso.nome }}" width="80" height="80" style="object-fit: cover; border-radius: 50%;">
+                    {% else %}
+                        <span class="text-muted">Sem foto</span>
+                    {% endif %}
+                </td>
+                <td>{{ idoso.nome }}</td>
+                <td>{{ idoso.data_nascimento|date:"d/m/Y" }}</td>
+                <td>{{ idoso.responsavel }}</td>
+                <td>
+                    {% for remedio in idoso.remedios.all %}
+                        {{ remedio.nome }}{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                </td>
+                <td>{{ idoso.observacoes }}</td>
+                <td>
+                    <a href="{% url 'editar_idoso' idoso.id %}" class="btn btn-sm btn-primary">Editar</a>
+                    <a href="{% url 'excluir_idoso' idoso.id %}" class="btn btn-sm btn-danger" onclick="return confirm('Deseja excluir este idoso?');">Excluir</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

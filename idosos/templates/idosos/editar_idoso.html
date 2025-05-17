@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block titulo %}Editar Idoso{% endblock %}
+{% block body %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Editar Cadastro do Idoso</h2>
+
+    <form method="POST" enctype="multipart/form-data" class="shadow p-4 bg-white rounded">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label class="form-label">Nome</label>
+            {{ form.nome }}
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Data de Nascimento</label>
+            {{ form.data_nascimento }}
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">CPF</label>
+            {{ form.cpf }}
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Endereço</label>
+            {{ form.endereco }}
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Responsável</label>
+            {{ form.responsavel }}
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Remédios</label>
+            {{ form.remedios }}
+            <small class="form-text text-muted">Segure Ctrl para selecionar vários.</small>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Observações</label>
+            {{ form.observacoes }}
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Foto Atual</label><br>
+            {% if idoso.foto %}
+                <img src="{{ idoso.foto.url }}" alt="Foto do Idoso" class="img-thumbnail" style="max-height: 200px;">
+            {% else %}
+                <p>Nenhuma foto cadastrada.</p>
+            {% endif %}
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Alterar Foto</label>
+            {{ form.foto }}
+        </div>
+
+        <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+        <a href="{% url 'lista_idosos' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

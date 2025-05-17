@@ -7,6 +7,7 @@ class Gerente(AbstractUserRole):
         'cadastrar_medicamentos': True,
         'cadastrar_responsaveis': True,
         'agendar_visitas': True,
+        'cadastrar_idoso': True,
     }
 
 
@@ -16,4 +17,5 @@ class Usuario(AbstractUserRole):
         'cadastrar_medicamentos': True,
         'cadastrar_responsaveis': True,
         'agendar_visitas': True,
+        'cadastrar_idoso': True,
     }

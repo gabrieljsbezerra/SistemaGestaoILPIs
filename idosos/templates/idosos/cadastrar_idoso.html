@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block titulo %}Cadastrar Idoso{% endblock %}
+{% block body %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Cadastro de Idoso</h2>
+    <form method="POST" class="shadow p-4 bg-white rounded" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label class="form-label">Nome</label>
+            {{ form.nome }}
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Data de Nascimento</label>
+            {{ form.data_nascimento }}
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">CPF</label>
+            {{ form.cpf }}
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Endereço</label>
+            {{ form.endereco }}
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Responsável</label>
+            {{ form.responsavel }}
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Remédios</label>
+            {{ form.remedios }}
+            <small class="form-text text-muted">Segure Ctrl para selecionar vários.</small>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Observações</label>
+            {{ form.observacoes }}
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Foto</label>
+            {{ form.foto }}
+        </div>
+
+        <button type="submit" class="btn btn-success">Cadastrar</button>
+        <a href="{% url 'lista_idosos' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

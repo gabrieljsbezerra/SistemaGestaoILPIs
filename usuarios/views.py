@@ -44,7 +44,7 @@ def cadastrar_usuario(request):
 def login(request):
     if request.method == "GET":
         if request.user.is_authenticated:
-            return redirect(reverse('plataforma'))
+            return render(request, 'home.html')
         return render(request, 'login.html')
     elif request.method == "POST":
         login = request.POST.get('email')
@@ -59,7 +59,7 @@ def login(request):
             return HttpResponse('Usuario invalido!')
             
         auth.login(request, user)
-        return HttpResponse('Usuario Logado!')
+        return render(request, 'home.html')
     
 def logout(request):
     request.session.flush()
