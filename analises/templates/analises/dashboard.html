@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block titulo %}Dashboard de Análises{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+  <h2 class="text-center mb-5">Dashboard de Análises</h2>
+
+  <div class="row mb-5">
+    <div class="col-md-12 text-center">
+      <h5>Visitas por Responsável</h5>
+      <img src="data:image/png;base64,{{ grafico_visitas }}" class="img-fluid rounded shadow">
+    </div>
+  </div>
+
+  <div class="row mb-5">
+    <div class="col-md-12 text-center">
+      <h5>Volume de Estoque por Remédio</h5>
+      <img src="data:image/png;base64,{{ grafico_estoque }}" class="img-fluid rounded shadow">
+    </div>
+  </div>
+
+  <div class="row mb-5">
+    <div class="col-md-12 text-center">
+      <h5>Custo Total por Remédio</h5>
+      <img src="data:image/png;base64,{{ grafico_custo }}" class="img-fluid rounded shadow">
+    </div>
+  </div>
+
+  <div class="row mb-5">
+    <div class="col-md-12 text-center">
+      <h5>Quantidade de Idosos por Remédio</h5>
+      <img src="data:image/png;base64,{{ grafico_idosos }}" class="img-fluid rounded shadow">
+    </div>
+  </div>
+</div>
+{% endblock %}
