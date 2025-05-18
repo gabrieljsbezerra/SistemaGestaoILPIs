@@ -7,6 +7,13 @@
 
     <a href="{% url 'nova_visita' %}" class="btn btn-success mb-3">Nova Visita</a>
 
+    <form method="GET" class="mb-4">
+        <div class="input-group">
+            <input type="text" name="busca" class="form-control" placeholder="Buscar por nome, data ou observação" value="{{ busca }}">
+            <button class="btn btn-primary" type="submit">Buscar</button>
+        </div>
+    </form>
+
     <table class="table table-striped text-center align-middle">
         <thead>
             <tr>
