@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'rolepermissions',
     'estoque',
     'idosos',
+    'visitas',
 ]
 
 MIDDLEWARE = [
