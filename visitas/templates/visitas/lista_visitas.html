@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block titulo %}Lista de Visitas{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Agendamentos de Visitas</h2>
+
+    <a href="{% url 'nova_visita' %}" class="btn btn-success mb-3">Nova Visita</a>
+
+    <table class="table table-striped text-center align-middle">
+        <thead>
+            <tr>
+                <th>Idoso</th>
+                <th>Responsável</th>
+                <th>Data</th>
+                <th>Horário</th>
+                <th>Observações</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for visita in visitas %}
+            <tr>
+                <td>{{ visita.idoso.nome }}</td>
+                <td>{{ visita.responsavel.nome }}</td>
+                <td>{{ visita.data|date:"d/m/Y" }}</td>
+                <td>{{ visita.horario|time:"H:i" }}</td>
+                <td>{{ visita.observacoes|default:"-" }}</td>
+                <td>
+                    <a href="{% url 'editar_visita' visita.id %}" class="btn btn-sm btn-primary">Editar</a>
+                    <a href="{% url 'excluir_visita' visita.id %}" class="btn btn-sm btn-danger" onclick="return confirm('Deseja excluir esta visita?');">Excluir</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6" class="text-center">Nenhuma visita agendada.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
