@@ -27,7 +27,7 @@
             <select name="categoria" class="form-select" required>
                 <option value="">Selecione a categoria</option>
                 {% for categoria in categorias %}
-                <option value="{{ categoria.id }}" {% if categoria.id==remedio.categoria.id %}selected{% endif %}>
+                <option value="{{ categoria.id }}" {% if categoria.id == remedio.categoria.id %}selected{% endif %}>
                     {{ categoria.tipo }}
                 </option>
                 {% endfor %}

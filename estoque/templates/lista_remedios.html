@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load filters %}
+{% block titulo %}Lista de Remédios{% endblock %}
+
+{% block body %}
+<a href="{% url 'add_remedio' %}" class="btn btn-success mb-3">Novo Medicamento</a>
+<div class="container mt-4">
+    <h3 class="mb-4 text-center">Medicamentos Cadastrados</h3>
+    <div class="d-flex flex-wrap justify-content-center" style="gap: 16px;">
+      {% for remedio in remedios %}
+      <div class="card shadow-sm border-0 rounded-3 remedio-card" style="width: 220px; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+        <div class="position-relative">
+          {% if remedio|get_first_image %}
+            <img src="{{ remedio|get_first_image }}" alt="{{ remedio.nome }}" class="card-img-top rounded-top img-fluid remedio-img" style="height: 180px; object-fit: cover;">
+          {% else %}
+            <img src="{% static 'img/remedio_default.jpg' %}" alt="Imagem não disponível" class="card-img-top rounded-top img-fluid remedio-img" style="height: 180px; object-fit: cover;">
+          {% endif %}
+        </div>
+        <div class="card-body px-3">
+          <h6 class="card-title text-truncate fw-bold mb-2">{{ remedio.nome }}</h6>
+          <p class="mb-1"><small><strong>Categoria:</strong> {{ remedio.categoria }}</small></p>
+          <p class="mb-1"><small><strong>Marca:</strong> {{ remedio.marca }}</small></p>
+          <p class="mb-1"><small><strong>Estoque:</strong> {{ remedio.quantidade }}</small></p>
+          <p class="mb-2"><small><strong>Custo:</strong> R$ {{ remedio.preco_compra }}</small></p>
+          <div class="d-flex justify-content-between">
+            <a href="{% url 'editar_remedio' remedio.id %}" class="btn btn-sm btn-outline-primary">
+              <i class="bi bi-pencil-square"></i>
+            </a>
+            <a href="{% url 'excluir_remedio' remedio.id %}" class="btn btn-sm btn-outline-danger" onclick="return confirm('Tem certeza que deseja excluir este medicamento?');">
+              <i class="bi bi-trash"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

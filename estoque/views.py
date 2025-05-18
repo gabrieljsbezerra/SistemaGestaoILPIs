@@ -12,6 +12,11 @@ from django.contrib import messages
 from rolepermissions.decorators import has_permission_decorator
 from django.shortcuts import get_object_or_404
 
+def lista_remedios(request):
+    categorias = Categoria.objects.all()
+    remedios = Remedio.objects.all()
+    return render(request, 'lista_remedios.html', {'categorias': categorias, 'remedios': remedios})
+
 @has_permission_decorator('cadastrar_medicamentos')
 def add_remedio(request):
     if request.method == "GET":
