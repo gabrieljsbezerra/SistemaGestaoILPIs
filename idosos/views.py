@@ -7,13 +7,22 @@ from rolepermissions.decorators import has_permission_decorator
 from django.contrib.auth.decorators import login_required
 from .forms import IdosoForm
 from .forms import ResponsavelForm
+from django.db.models import Q
 
 @login_required
 def home(request):
     return render(request, 'home.html')
 @has_permission_decorator('cadastrar_idoso')
 def lista_idosos(request):
-    idosos = Idoso.objects.all()
+    termo_busca = request.GET.get('busca', '')
+    if termo_busca:
+        idosos = Idoso.objects.filter(
+            Q(nome__icontains=termo_busca) |
+            Q(cpf__icontains=termo_busca) |
+            Q(responsavel__nome__icontains=termo_busca)
+        )
+    else:
+        idosos = Idoso.objects.all()
     return render(request, 'idosos/lista_idosos.html', {'idosos': idosos})
 
 @has_permission_decorator('cadastrar_idoso')
@@ -66,7 +75,15 @@ def cadastrar_responsavel(request):
 
 @login_required
 def lista_responsaveis(request):
-    responsaveis = Responsavel.objects.all()
+    termo_busca = request.GET.get('busca', '')
+    if termo_busca:
+        responsaveis = Responsavel.objects.filter(
+            Q(nome__icontains=termo_busca) |
+            Q(email__icontains=termo_busca) |
+            Q(telefone__icontains=termo_busca)
+        )
+    else:
+        responsaveis = Responsavel.objects.all()
     return render(request, 'idosos/lista_responsaveis.html', {'responsaveis': responsaveis})
 
 @login_required

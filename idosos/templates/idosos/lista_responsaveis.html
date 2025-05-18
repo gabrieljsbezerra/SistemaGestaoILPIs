@@ -5,9 +5,10 @@
 <div class="container mt-5">
     <h2 class="text-center mb-4">Lista de Responsáveis</h2>
 
-    <form method="GET" class="mb-3">
-        <input type="text" name="q" class="form-control" placeholder="Buscar por nome ou telefone..." value="{{ request.GET.q }}">
-    </form>
+    <form method="GET" class="d-flex mb-3" role="search">
+        <input type="text" name="busca" class="form-control me-2" placeholder="Buscar..." value="{{ request.GET.busca }}">
+        <button type="submit" class="btn btn-outline-secondary">Buscar</button>
+      </form>
 
     <a href="{% url 'cadastrar_responsavel' %}" class="btn btn-success mb-3">Novo Cadastro</a>
 

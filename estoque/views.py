@@ -11,11 +11,26 @@ from django.urls import reverse
 from django.contrib import messages
 from rolepermissions.decorators import has_permission_decorator
 from django.shortcuts import get_object_or_404
+from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 
+@login_required
 def lista_remedios(request):
+    termo_busca = request.GET.get('busca', '')
+    if termo_busca:
+        remedios = Remedio.objects.filter(
+            Q(nome__icontains=termo_busca) |
+            Q(marca__icontains=termo_busca) |
+            Q(categoria__tipo__icontains=termo_busca)  # <-- campo correto
+        )
+    else:
+        remedios = Remedio.objects.all()
+
     categorias = Categoria.objects.all()
-    remedios = Remedio.objects.all()
-    return render(request, 'lista_remedios.html', {'categorias': categorias, 'remedios': remedios})
+    return render(request, 'lista_remedios.html', {
+        'categorias': categorias,
+        'remedios': remedios
+    })
 
 @has_permission_decorator('cadastrar_medicamentos')
 def add_remedio(request):
