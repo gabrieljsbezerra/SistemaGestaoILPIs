@@ -78,13 +78,16 @@
       <a href="{% url 'lista_visitas' %}">Gerenciar Visitas</a>
     </div>
   </div>
-</div>
 
-<div class="col-md-4">
-  <div class="card-home">
-    <i class="bi bi-bar-chart-fill"></i>
-    <h5>Análise de Dados</h5>
-    <a href="{% url 'dashboard' %}">Acessar Dashboard</a>
+  <!-- ✅ Novo card dentro da mesma row -->
+  <div class="row justify-content-center mt-4">
+    <div class="col-md-3">
+      <div class="card-home">
+        <i class="bi bi-bar-chart-fill"></i>
+        <h5>Análise de Dados</h5>
+        <a href="{% url 'dashboard' %}">Acessar Dashboard</a>
+      </div>
+    </div>
   </div>
-</div>
+  
 {% endblock %}
