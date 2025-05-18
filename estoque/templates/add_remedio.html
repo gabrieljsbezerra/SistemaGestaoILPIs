@@ -4,44 +4,45 @@
 
 {% block body %}
 <div class="container">
-    {% if messages %}
-    <br>
-    {% for message in messages %}
-        <div class="alert {{message.tags}}">{{message}}</div>
-    {% endfor %}
-    {% endif %}
-    <h2 class="mb-4">Cadastrar Remédio</h2>
-    <form action="{% url 'add_remedio' %}" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+  {% if messages %}
+  <br>
+  {% for message in messages %}
+  <div class="alert {{message.tags}}">{{message}}</div>
+  {% endfor %}
+  {% endif %}
+  <h2 class="mb-4">Cadastrar Remédio</h2>
+  <form action="{% url 'add_remedio' %}" method="POST" enctype="multipart/form-data" class="needs-validation"
+    novalidate>
     {% csrf_token %}
 
-        <div class="mb-3">
-          <label for="imagens" class="form-label">Imagens:</label>
-          <input class="form-control" type="file" name="imagens" id="imagens" multiple>
-        </div>      
-        <div class="mb-3">
-          <label for="nome" class="form-label">Nome:</label>
-          <input class="form-control" type="text" name="nome" id="nome" required>
-        </div>      
-        <div class="mb-3">
-          <label for="categoria" class="form-label">Categoria:</label>
-          <select class="form-select" name="categoria" id="categoria" required>
-            {% for categoria in categorias %}
-              <option value="{{ categoria.id }}">{{ categoria.tipo }}</option>
-            {% endfor %}
-          </select>
-        </div>      
-        <div class="mb-3">
-          <label for="marca" class="form-label">Marca:</label>
-          <input class="form-control" type="text" name="marca" id="marca">
-        </div>      
-        <div class="mb-3">
-          <label for="quantidade" class="form-label">Quantidade:</label>
-          <input class="form-control" type="number" name="quantidade" id="quantidade">
-        </div>      
-        <div class="mb-3">
-          <label for="preco_compra" class="form-label">Custo:</label>
-          <input class="form-control" type="number" name="preco_compra" id="preco_compra" step="0.01">
-        </div>      
-        <button type="submit" class="btn btn-success">Salvar</button>
-    </form>
-{% endblock %}
+    <div class="mb-3">
+      <label for="imagens" class="form-label">Imagens:</label>
+      <input class="form-control" type="file" name="imagens" id="imagens" multiple>
+    </div>
+    <div class="mb-3">
+      <label for="nome" class="form-label">Nome:</label>
+      <input class="form-control" type="text" name="nome" id="nome" required>
+    </div>
+    <div class="mb-3">
+      <label for="categoria" class="form-label">Categoria:</label>
+      <select class="form-select" name="categoria" id="categoria" required>
+        {% for categoria in categorias %}
+        <option value="{{ categoria.id }}">{{ categoria.tipo }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="marca" class="form-label">Marca:</label>
+      <input class="form-control" type="text" name="marca" id="marca">
+    </div>
+    <div class="mb-3">
+      <label for="quantidade" class="form-label">Quantidade:</label>
+      <input class="form-control" type="number" name="quantidade" id="quantidade">
+    </div>
+    <div class="mb-3">
+      <label for="preco_compra" class="form-label">Custo:</label>
+      <input class="form-control" type="number" name="preco_compra" id="preco_compra" step="0.01">
+    </div>
+    <button type="submit" class="btn btn-success">Salvar</button>
+  </form>
+  {% endblock %}
