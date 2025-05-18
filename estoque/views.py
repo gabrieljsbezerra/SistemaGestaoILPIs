@@ -71,7 +71,7 @@ def add_remedio(request):
             img_dj = Imagem(imagem = img_final, remedio=remedio)
             img_dj.save()
         messages.add_message(request, messages.SUCCESS, 'Medicamento cadastrado com sucesso!')
-        return redirect(reverse('add_remedio'))
+        return redirect(reverse('lista_remedios'))
     
 @has_permission_decorator('cadastrar_medicamentos')
 def editar_remedio(request, id):

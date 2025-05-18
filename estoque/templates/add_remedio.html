@@ -4,12 +4,6 @@
 
 {% block body %}
 <div class="container">
-  {% if messages %}
-  <br>
-  {% for message in messages %}
-  <div class="alert {{message.tags}}">{{message}}</div>
-  {% endfor %}
-  {% endif %}
   <h2 class="mb-4">Cadastrar Remédio</h2>
   <form action="{% url 'add_remedio' %}" method="POST" enctype="multipart/form-data" class="needs-validation"
     novalidate>
@@ -44,5 +38,6 @@
       <input class="form-control" type="number" name="preco_compra" id="preco_compra" step="0.01">
     </div>
     <button type="submit" class="btn btn-success">Salvar</button>
+    <a href="{% url 'lista_remedios' %}" class="btn btn-secondary">Cancelar</a>
   </form>
   {% endblock %}
