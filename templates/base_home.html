@@ -20,6 +20,36 @@
 
     {% block head %}{% endblock %}
   </head>
+  
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    function readTextAloud(text) {
+      if ('speechSynthesis' in window) {
+        const speech = new SpeechSynthesisUtterance(text);
+        speech.lang = 'pt-BR';
+        speech.onerror = (event) => {
+          console.error("Erro na leitura em voz alta:", event);
+        };
+        window.speechSynthesis.speak(speech);
+      } else {
+        alert('Seu navegador não suporta leitura em voz alta.');
+        console.error('speechSynthesis não está disponível no navegador.');
+      }
+    }
+
+    const readButtons = document.querySelectorAll(".btn-read-aloud");
+    readButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        const textToRead = button.getAttribute("data-text");
+        if (textToRead) {
+          readTextAloud(textToRead);
+        } else {
+          console.error("Texto para leitura está vazio.");
+        }
+      });
+    });
+  });
+</script>
 
   <body>
     <!-- NAVBAR -->
