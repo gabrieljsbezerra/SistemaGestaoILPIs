@@ -21,20 +21,16 @@ body {
   flex-direction: column;
 }
 
-/* Tema claro */
-:root {
+:root[data-theme="light"] {
   --bg: #f8f9fa;
   --text: #212529;
   --card: #ffffff;
-  --border: #dee2e6;
 }
 
-/* Tema escuro */
-[data-theme="dark"] {
+:root[data-theme="dark"] {
   --bg: #121212;
   --text: #f1f1f1;
-  --card: #1f1f1f;
-  --border: #333;
+  --card: #1e1e1e;
 }
 
 /* Botão de troca de tema */
