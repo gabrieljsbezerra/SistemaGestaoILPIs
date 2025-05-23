@@ -3,9 +3,13 @@
 {% block body %}
 <div class="container mt-5">
     <h2 class="text-center mb-4">Lista de Idosos</h2>
-
+    <div class="text-center mb-5">
+        <button type="button" class="btn btn-sm btn-outline-secondary btn-read-aloud"
+        data-text="Listagem de Idosos. Aqui você pode gerenciar o cadastro dos idosos, adicionar, editar e excluir.">
+        <i class="bi bi-volume-up"></i>
+        </button>
+    </div>
     
-
     <form method="GET" class="d-flex mb-3" role="search">
         <input type="text" name="busca" class="form-control me-2" placeholder="Buscar..." value="{{ request.GET.busca }}">
         <button type="submit" class="btn btn-outline-secondary">Buscar</button>

@@ -5,6 +5,14 @@
 {% block body %}
 <div class="container">
   <h2 class="mb-4">Cadastrar Remédio</h2>
+
+    <div class="text-center mb-5">
+        <button type="button" class="btn btn-sm btn-outline-secondary btn-read-aloud"
+        data-text="Cadastro de Medicamentos.">
+        <i class="bi bi-volume-up"></i>
+        </button>
+    </div>
+
   <form action="{% url 'add_remedio' %}" method="POST" enctype="multipart/form-data" class="needs-validation"
     novalidate>
     {% csrf_token %}

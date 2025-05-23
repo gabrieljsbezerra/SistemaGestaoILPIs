@@ -6,6 +6,14 @@
 {% block body %}
 <div class="container mt-5">
     <h1 class="text-center mb-4">Editar Cadastro - Medicamento</h1>
+
+    <div class="text-center mb-5">
+        <button type="button" class="btn btn-sm btn-outline-secondary btn-read-aloud"
+        data-text="Editar cadastro de medicamentos.">
+        <i class="bi bi-volume-up"></i>
+        </button>
+    </div>
+
     <form method="POST" enctype="multipart/form-data" class="shadow p-4 bg-white rounded">
         {% csrf_token %}
 

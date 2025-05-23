@@ -3,6 +3,14 @@
 {% block body %}
 <div class="container mt-5">
     <h2 class="text-center mb-4">Cadastro de Responsável</h2>
+
+    ]<div class="text-center mb-5">
+        <button type="button" class="btn btn-sm btn-outline-secondary btn-read-aloud"
+        data-text="Cadastro de novos Responsáveis.">
+        <i class="bi bi-volume-up"></i>
+        </button>
+    </div>
+
     <form method="POST" class="shadow p-4 bg-white rounded">
         {% csrf_token %}
         {{ form.as_p }}

@@ -5,6 +5,13 @@
 <div class="container mt-5">
     <h2 class="text-center mb-4">Agendamentos de Visitas</h2>
 
+    <div class="text-center mb-5">
+        <button type="button" class="btn btn-sm btn-outline-secondary btn-read-aloud"
+        data-text="Listagem de Visitas cadastradas. Aqui você pode gerenciar as visitas, adicionar, editar e excluir.">
+        <i class="bi bi-volume-up"></i>
+        </button>
+    </div>
+
     <a href="{% url 'nova_visita' %}" class="btn btn-success mb-3">Nova Visita</a>
 
     <form method="GET" class="mb-4">
